@@ -3,10 +3,11 @@ $color-primary: #0070f3;
 .modal {
   z-index: 1;
   position: fixed;
-  padding-top: 100px;
   left: 1;
   top: 1;
+  width: 90%;
   max-width: 750px;
+  height: auto;
   margin: 1rem;
   flex-basis: 45%;
   padding: 1.5rem;
@@ -16,8 +17,21 @@ $color-primary: #0070f3;
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
-
+.modal:hover,
+.modal:focus,
+.modal:active {
+  color: $color-primary;
+  border-color: $color-primary;
+}
+.button {
+  border: 1px solid #eaeaea;
+  background-color: #fff;
+  margin: 1rem;
+  flex-basis: 45%;
+  padding: 1.5rem;
+}
 @media screen and (max-width: 600px) {
   .modal {
     margin-top: 20%;

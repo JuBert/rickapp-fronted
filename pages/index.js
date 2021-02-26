@@ -33,8 +33,10 @@ export default function Home({ beers }) {
           Beers with <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Data fetched from{' '}
+          <code className={styles.code}>
+            <a href="https://punkapi.com/">punk API</a>
+          </code>
         </p>
         <div className={styles.grid}>
           {beers.map((beer) => (
