@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.module.scss';
 import { Navbar } from '../components/Navbar';
+import { Modal } from '../components/Modal';
 
 export default function Home({ beers }) {
+  const [modal, setModal] = useState(false);
+  const handleClick = () => {
+    console.log('Modal Time');
+    setModal(!modal);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -20,12 +27,13 @@ export default function Home({ beers }) {
         </p>
         <div className={styles.grid}>
           {beers.map((beer) => (
-            <a href="https://nextjs.org/docs" className={styles.card}>
+            <a onClick={handleClick} className={styles.card} key={beer.id}>
               <h3>{beer.name} &rarr;</h3>
               <p>{beer.tagline}</p>
             </a>
           ))}
         </div>
+        <Modal show={modal} />
       </main>
       <footer className={styles.footer}>
         <a
