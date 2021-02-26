@@ -1,16 +1,14 @@
-import { useState } from 'react';
 import styles from '../styles/Modal.module.scss';
 
-export const Modal = (props) => {
-  const BeerModalMarkup = () => {
-    if (!props.show) {
-      return null;
-    }
-    return (
-      <div className={styles.modal}>
-        <p>HelloModal</p>
-      </div>
-    );
-  };
-  return <BeerModalMarkup />;
+export const Modal = ({ beer, onClick }) => {
+  return (
+    <div className={styles.modal}>
+      <h2>{beer.name}</h2>
+      <p>{beer.tagline}</p>
+      <p>First brewed: {beer.first_brewed}</p>
+      <p>{beer.description}</p>
+      <p>Food pairing: {beer.food_pairing}</p>
+      <button onClick={onClick}>Close</button>
+    </div>
+  );
 };

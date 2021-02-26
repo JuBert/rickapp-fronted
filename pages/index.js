@@ -6,10 +6,21 @@ import { Modal } from '../components/Modal';
 
 export default function Home({ beers }) {
   const [modal, setModal] = useState(false);
-  const handleClick = () => {
-    console.log('Modal Time');
+  const [beerLookup, setBeerLookup] = useState({});
+
+  const handleClick = (id, e) => {
+    let beerDetails = beers[id - 1];
+    setBeerLookup(beerDetails);
     setModal(!modal);
   };
+
+  const ModalMarkup = () => {
+    if (!modal) {
+      return null;
+    }
+    return <Modal beer={beerLookup} onClick={handleClick} />;
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -27,13 +38,17 @@ export default function Home({ beers }) {
         </p>
         <div className={styles.grid}>
           {beers.map((beer) => (
-            <a onClick={handleClick} className={styles.card} key={beer.id}>
+            <a
+              onClick={(e) => handleClick(beer.id, e)}
+              className={styles.card}
+              key={beer.id}
+            >
               <h3>{beer.name} &rarr;</h3>
               <p>{beer.tagline}</p>
             </a>
           ))}
         </div>
-        <Modal show={modal} />
+        <ModalMarkup />
       </main>
       <footer className={styles.footer}>
         <a
